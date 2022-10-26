@@ -29,4 +29,8 @@ workflows:
   backendCompiling: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:
+<<<<<<< HEAD
       - build-and-test-javascript
+=======
+      - build-and-test-javascript
+>>>>>>> b45d3d0e81afebef17cb804fca4ba445c35e3b40
