@@ -26,7 +26,7 @@ function LoginForm(props) {
       <form className={classes.form} onSubmit={submitHandler}>
         <div className={classes.control}>
           <label htmlFor="email">Email</label>
-          <input type="text" required id="email" ref={emailInputRef} />
+          <input type="text" required id="email" ref={emailInputRef} data-testid="EmailInput1" />
         </div>
         <div className={classes.control}>
           <label htmlFor="password">Password</label>
