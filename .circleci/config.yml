@@ -13,6 +13,6 @@ jobs:
        - checkout
        - run:
            name: install dependencies
-           command: npm install
+           command: yarn install
 jobs:
       - build-and-test-javascript
