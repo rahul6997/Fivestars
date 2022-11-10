@@ -11,6 +11,7 @@ const connectDB = require('./config/connectDB');
 
 const doctorslistRouter = require('./routes/doctorslist-routes');
 const signupRouter = require('./routes/signups-routers');
+const loginRouter = require('./routes/login-router');
 
 const credentials = require('./middleware/credentials');
 const corsOptions = require('./config/corsOptions');
@@ -44,6 +45,7 @@ app.use((req, res, next) => {
 
 
 app.use('/signup', signupRouter);
+app.use('/login', loginRouter);
 
 
 app.use('/', doctorslistRouter);
