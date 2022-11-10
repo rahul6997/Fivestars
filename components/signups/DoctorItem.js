@@ -8,7 +8,7 @@ function DoctorItem(props) {
         {/* <div className={classes.image}>
           <img src={props.image} alt={props.title} />
         </div> */}
-        <div className={classes.content}>
+        <div className={classes.content} data-testid={`doctor-${props.id}`}>
           <h3>{props.Name}</h3>
           <address><strong>Qualification: </strong>{props.Qualification}</address>
           <address><strong>Speciality: </strong>{props.Speciality}</address>

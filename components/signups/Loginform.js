@@ -33,7 +33,7 @@ function LoginForm(props) {
           <input type="text" required id="password" ref={passwordInputRef} />
         </div>
         <div className={classes.actions}>
-          <button>Login</button>
+          <button data-testid="LoginBtn">Login</button>
         </div>
       </form>
     </Card>
