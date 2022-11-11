@@ -2,8 +2,11 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
+  "/Signup": "pages/Signup.js",
+  "/Signup/patient": "pages/Signup/patient.js",
+  "/Login/patient": "pages/Login/patient.js",
+  "/Login": "pages/Login.js",
   "/": "pages/index.js",
-  "/AccountCreation/login": "pages/AccountCreation/login.js",
   "/Doctor": "pages/Doctor.js",
-  "/AccountCreation": "pages/AccountCreation.js"
+  "/BookAppointment": "pages/BookAppointment.js"
 }
