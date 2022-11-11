@@ -6,7 +6,7 @@ version: 2.1
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
   build-and-test-javascript:
-    working_directory: ~/Users/rahul/Documents/Project/Fivestars
+    working_directory: ~/Users/rahul/Documents/Project/Fivestars/Backend
     docker:
        - image: cimg/node:14.20.0
     steps:
@@ -16,7 +16,7 @@ jobs:
            command: npm install
        - run:
           name: run tests
-          command: cd Backend/Backend-test && npm run test
+          command: npm run test
   
   # Below is the definition of your job to build and test your app, you can rename and customize it as you want.
       
