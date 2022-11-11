@@ -26,7 +26,11 @@ jobs:
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  backendCompiling: # This is the name of the workflow, feel free to change it to better match your workflow.
+  FrontendCompiling: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:
-      - build-and-test-javascript
+      - build-and-test-javascript:
+          filters:
+            branches:
+              only:
+                - main
