@@ -1,5 +1,5 @@
 import { render, fireEvent } from "@testing-library/react";
-import LoginForm from "../signups/Loginform";
+import * as LoginForm from "../signups/Loginform";
 
 it("InputRenderCheck", () => {
     const { getByTestId } = render(<LoginForm />);

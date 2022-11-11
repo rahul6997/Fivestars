@@ -5,13 +5,11 @@ import Link from "next/link";
 import Card from "../ui/Card";
 import classes from "./NewSignupForm.module.css";
 
-function NewSignupForm(props) {
+function NewSignupFormPatient(props) {
   const firstNameInputRef = useRef();
   const lastNameInputRef = useRef();
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
-  const ageInputRef = useRef();
-  const genderInputRef = useRef();
 
   const [isAccountCreated, setIsAccountCreated] = useState(false);
   const errorMessage = "Account already Exists";
@@ -26,7 +24,7 @@ function NewSignupForm(props) {
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
 
-    const doctorData = {
+    const patientData = {
       firstName: enteredFirstName,
       lastName: enteredLastName,
       email: enteredEmail,
@@ -38,10 +36,10 @@ function NewSignupForm(props) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(doctorData),
+      body: JSON.stringify(patientData),
     };
 
-    fetch("http://localhost:4000/signup", options)
+    fetch("http://localhost:4000/signup/patient", options)
       .then((Response) => {
         if (!Response.ok) {
           firstNameInputRef.current.value = "";
@@ -52,13 +50,11 @@ function NewSignupForm(props) {
         } else {
           console.log("Successful");
           setIsAccountCreated(false);
-          router.push("/Doctor");
+          router.push("/Patient");
           return Response.json();
         }
       })
       .catch((err) => console.log(err));
-
-    console.log(doctorData);
   }
 
   return (
@@ -85,11 +81,11 @@ function NewSignupForm(props) {
           <button>SignUp</button>
         </div>
         <div>
-          <Link href="/Signup/patient">SignUp as a Customer</Link>
+          <Link href="/Signup">SignUp as a Doctor</Link>
         </div>
       </form>
     </Card>
   );
 }
 
-export default NewSignupForm;
+export default NewSignupFormPatient;

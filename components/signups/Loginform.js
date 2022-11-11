@@ -1,4 +1,6 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 import Card from "../ui/Card";
 import classes from "./NewSignupForm.module.css";
@@ -6,6 +8,10 @@ import classes from "./NewSignupForm.module.css";
 function LoginForm(props) {
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
+  const router = useRouter();
+
+  const [isAccountCreated, setIsAccountCreated] = useState(false);
+  const errorMessage = "Authentication Failed";
 
   function submitHandler(event) {
     event.preventDefault();
@@ -18,22 +24,50 @@ function LoginForm(props) {
       password: enteredPassword,
     };
 
-    props.onAddDoctor(doctorData);
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(doctorData),
+    };
+
+    fetch("http://localhost:4000/login", options)
+      .then((Response) => {
+        if (!Response.ok) {
+          emailInputRef.current.value = "";
+          passwordInputRef.current.value = "";
+          setIsAccountCreated(true);
+        } else {
+          console.log("Successful");
+          setIsAccountCreated(false);
+          router.push("/Doctor");
+          return Response.json();
+        }
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
   }
 
   return (
     <Card>
       <form className={classes.form} onSubmit={submitHandler}>
+        <div className={classes.error}>{isAccountCreated && errorMessage}</div>
         <div className={classes.control}>
           <label htmlFor="email">Email</label>
-          <input type="text" required id="email" ref={emailInputRef} data-testid="EmailInput" />
+          <input type="text" required id="email" ref={emailInputRef} />
         </div>
         <div className={classes.control}>
           <label htmlFor="password">Password</label>
           <input type="text" required id="password" ref={passwordInputRef} />
         </div>
         <div className={classes.actions}>
-          <button data-testid="LoginBtn">Login</button>
+          <button type="submit">Login</button>
+        </div>
+        <div>
+          <Link href="/Login/patient">Login as a Customer</Link>
         </div>
       </form>
     </Card>
