@@ -10,10 +10,10 @@ const MainNavigation = () => {
       <nav>
         <ul>
           <li>
-            <Link href="/AccountCreation/">Sign Up</Link>
+            <Link href="/Signup/">Sign Up</Link>
           </li>
           <li>
-            <Link href="/AccountCreation/login">Login</Link>
+            <Link href="/Login">Login</Link>
           </li>
           <li>
             <Link href="/Doctor/">DoctorsList</Link>
