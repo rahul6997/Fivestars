@@ -40,6 +40,7 @@ router.get('/', (req, res, next) => {
     //     return d.id === doctorId;
     // });
     res.json({Dummy_Doctors_List});
+    res.status(200);
 });
 
 module.exports = router;
