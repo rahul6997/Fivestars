@@ -14,9 +14,10 @@ jobs:
        - run:
            name: install dependencies
            command: npm install
+      
        - run:
-          name: run tests
-          command: cd Backend/Backend-test && npm run test
+           name: run tests
+           command: npm run test
   
   # Below is the definition of your job to build and test your app, you can rename and customize it as you want.
       
@@ -25,7 +26,11 @@ jobs:
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  backendCompiling: # This is the name of the workflow, feel free to change it to better match your workflow.
+  FrontendCompiling: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:
-      - build-and-test-javascript
+      - build-and-test-javascript:
+          filters:
+            branches:
+              only:
+                - master
