@@ -36,4 +36,64 @@ describe("api test suite", () => {
         expect(response.status).toEqual(200);
       });
   });
+
+  test("POST / fetching the doctor Appointments by sending the user id", async () => {
+
+    const data = {
+        doctorId: '638562c7ffb04c1cb1faf829'
+    }
+    const payload = JSON.stringify(data);
+    request(app)
+      .post("/")
+      .send(payload)
+      .set("Content-Type", "application/json")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        expect(data).toBeDefined();
+        //expect(data[0].firstName).toEqual("Sandeep");
+      });
+  });
+  
+  test("GET / fetching and checking whether I can fetch the data ", () => {
+    request(app)
+      .get("/")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        expect(data).toBeDefined();
+      });
+    //const data = response.JSON();
+    //console.log(data);
+  });
+  
+    test("GET / fetching the data and checking a user name exist or not", async () => {
+    request(app)
+      .get("/")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        expect(data).toBeDefined();
+        expect(data[0].firstName).toEqual("Sandeep");
+      });
+  });
+  
+   test("POST /login trying to login and need to get 200 status code", () => {
+    const data = {
+      email: "sandeep1@gmail.com",
+      password: "sandeep1",
+    };
+    const payload = JSON.stringify(data);
+    request(app)
+      .post("/login")
+      .send(payload)
+      .set("Content-Type", "application/json")
+      .then((response) => {
+        expect(response.status).toEqual(200);
+      });
+  });
+  
 });
