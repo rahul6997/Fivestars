@@ -7,7 +7,7 @@ import AppointmentsList from "../../components/Appointments/AppointmentsList";
 //Rendering MyAppointments component to list all appointments
 
 const MyAppointments = () => {
-  const user = useSelector((state) => state.auth.user);
+  const user = useSelector((state) => state.auth.user); // accessing the user details stored in redux store
   const isDoctor = useSelector((state) => state.auth.isDoctor);
   const [appointments, setAppointments] = useState([]);
 
