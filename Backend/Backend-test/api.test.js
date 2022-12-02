@@ -69,4 +69,16 @@ describe("api test suite", () => {
     //console.log(data);
   });
   
+    test("GET / fetching the data and checking a user name exist or not", async () => {
+    request(app)
+      .get("/")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        expect(data).toBeDefined();
+        expect(data[0].firstName).toEqual("Sandeep");
+      });
+  });
+  
 });
