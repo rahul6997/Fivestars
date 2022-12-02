@@ -18,6 +18,9 @@ const MainNavigation = () => {
           <li>
             <Link href="/Doctor/">DoctorsList</Link>
           </li>
+          <li>
+            <Link href="/Patient/">PatientsList</Link>
+          </li>
         </ul>
       </nav>
     </header>
