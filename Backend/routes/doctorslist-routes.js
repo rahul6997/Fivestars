@@ -1,4 +1,5 @@
 const express = require('express');
+const Doctor = require('../models/Doctor');
 
 const router = express.Router();
 
@@ -34,13 +35,19 @@ const router = express.Router();
     },
   ];
 
+  //fetching all the doctorslist in our database and sending it as a response
+  
 router.get('/', (req, res, next) => {
     // const doctorId = req.params.did;
     // const doctor = Dummy_Doctors_List.find(d => {
     //     return d.id === doctorId;
     // });
-    res.json({Dummy_Doctors_List});
-    res.status(200);
+    Doctor.find()
+    .exec()
+    .then((users) => {
+        res.json(users);
+    });
+    //res.json({Dummy_Doctors_List});
 });
 
 module.exports = router;
