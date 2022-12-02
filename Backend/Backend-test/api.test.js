@@ -4,18 +4,6 @@ const { response } = require("../app");
 const app = require("../app");
 
 describe("api test suite", () => {
-  test("GET /", (done) => {
-    request(app)
-      .get("/")
-      .expect("Content-Type", /json/)
-      .expect(200)
-      // .expect(res.body.todo.length).toEqual(3)
-      .end((err, res) => {
-        if (err) return done(err);
-
-        return done();
-      });
-  });
 
   test("POST /signup trying to create a doctor account and need to get 200 status code on successfull account creation", () => {
     const data = {
