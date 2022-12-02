@@ -3,6 +3,8 @@ import Card from "../../components/ui/Card";
 import NewSignupForm from "../../components/signups/NewSignupForm";
 import NewSignupFormPatient from "../../components/signups/NewSignupFormPatient";
 
+//Rendering NewSignupForm component for doctor signup form
+
 const SignUp = () => {
   return (
     <Fragment>
