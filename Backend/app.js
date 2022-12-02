@@ -64,3 +64,6 @@ mongoose.connection.once('open', () => {
     console.log("Connected to MongoDB");
     app.listen(4000, () => console.log("Server Running on Port 4000"));
 });
+
+
+module.exports = app;
