@@ -15,25 +15,40 @@
   ],
   "rootMainFiles": [],
   "pages": {
-    "/": [
+    "/BookAppointment": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/index.js"
-    ],
-    "/AccountCreation": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/AccountCreation.js"
-    ],
-    "/AccountCreation/login": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/AccountCreation/login.js"
+      "static/chunks/pages/BookAppointment.js"
     ],
     "/Doctor": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/Doctor.js"
+    ],
+    "/Login": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/Login.js"
+    ],
+    "/Login/patient": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/Login/patient.js"
+    ],
+    "/Patient": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/Patient.js"
+    ],
+    "/Signup": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/Signup.js"
+    ],
+    "/Signup/patient": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/Signup/patient.js"
     ],
     "/_app": [
       "static/chunks/webpack.js",

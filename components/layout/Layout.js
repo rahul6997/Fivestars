@@ -1,6 +1,9 @@
 import MainNavigation from './MainNavigation';
 import classes from './Layout.module.css';
 
+
+//Rendering the Layout component
+
 function Layout(props) {
   return (
     <div>

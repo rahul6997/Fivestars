@@ -5,10 +5,14 @@ const router = express.Router();
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
+//importing the doctor and patient model/schema
+
 const Doctor = require("../models/Doctor");
 const Patient = require("../models/Patient");
 
 router.post("/", (req, res, next) => {
+
+  //searching whether user exist in database to login, if exist we let him to login
   Doctor.find({ email: req.body.email })
     .exec()
     .then((user) => {
@@ -17,6 +21,9 @@ router.post("/", (req, res, next) => {
           message: "Authorization Failed",
         });
       }
+
+      //if email exists in database then verifying the password entered is corrector not and procceed accordingly
+
       bcrypt.compare(req.body.password, user[0].password, (err, result) => {
         if (err) {
           return res.status(401).json({
@@ -24,6 +31,9 @@ router.post("/", (req, res, next) => {
           });
         }
         if (result) {
+
+          //if password matches then we let him login and create access token and refresh token for consistency during his use of website
+
           const access_token = jwt.sign(
             {
               email: user[0].email,
@@ -44,9 +54,12 @@ router.post("/", (req, res, next) => {
               expiresIn: "1d",
             }
           );
+
+          //storing the refresh token in cookie to access it later
+
           res.cookie("jwt", refresh_token, {
             httpOnly: true,
-            sameSite: 'None',
+            sameSite: "None",
             secure: true,
             maxAge: 24 * 60 * 60 * 1000,
           });
@@ -69,6 +82,9 @@ router.post("/", (req, res, next) => {
 });
 
 router.post("/patient", (req, res, next) => {
+
+  //searching whether user exist in database to login, if exist we let him to login
+
   Patient.find({ email: req.body.email })
     .exec()
     .then((user) => {
@@ -77,6 +93,9 @@ router.post("/patient", (req, res, next) => {
           message: "Authorization Failed",
         });
       }
+
+      //if email exists in database then verifying the password entered is corrector not and procceed accordingly
+
       bcrypt.compare(req.body.password, user[0].password, (err, result) => {
         if (err) {
           return res.status(401).json({
@@ -84,6 +103,9 @@ router.post("/patient", (req, res, next) => {
           });
         }
         if (result) {
+
+          //if password matches then we let him login and create access token and refresh token for consistency during his use of website
+
           const access_token = jwt.sign(
             {
               email: user[0].email,
@@ -104,9 +126,12 @@ router.post("/patient", (req, res, next) => {
               expiresIn: "1d",
             }
           );
+
+          //storing the refresh token in cookie to access it later
+          
           res.cookie("jwt", refresh_token, {
             httpOnly: true,
-            sameSite: 'None',
+            sameSite: "None",
             secure: true,
             maxAge: 24 * 60 * 60 * 1000,
           });
@@ -126,6 +151,31 @@ router.post("/patient", (req, res, next) => {
         error: err,
       });
     });
+});
+
+router.post("/doctorprofile", async (req, res, next) => {
+  const user = await Doctor.findById(req.user._id);
+
+  if (user) {
+    user.firstName = req.body.firstName || user.firstName;
+    user.lastName = req.body.lastName || user.lastName;
+    user.email = req.body.email || user.email;
+    user.age = req.body.age || user.age;
+    user.qualification = req.body.qualification || user.qualification;
+    user.speciality = req.body.speciality || user.speciality;
+    user.phoneNumber = req.body.phoneNumber || user.phoneNumber;
+
+    if (req.body.password) {
+      user.password = req.body.password;
+    }
+
+    const updatedProfile = await Doctor.save();
+
+    res.json({ updatedProfile });
+  } else {
+    res.status(404);
+    throw new Error("user not found!");
+  }
 });
 
 module.exports = router;

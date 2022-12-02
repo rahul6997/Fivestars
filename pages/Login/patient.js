@@ -3,6 +3,8 @@ import { Fragment } from "react";
 import Card from "../../components/ui/Card";
 import LoginFormPatient from "../../components/signups/LoginFormPatient";
 
+//Rendering LoginFormPatient component for patient Login form
+
 const LogIn = () => {
   return (
     <Fragment>

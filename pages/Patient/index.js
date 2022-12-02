@@ -1,8 +1,30 @@
 import { Fragment } from "react";
+import Patientlist from "../../components/signups/PatientList";
 
-import DoctorsList from "../../components/signups/DoctorsList";
-import MainNavigation from "../../components/layout/MainNavigation";
-import classes from "./index.module.css";
+const patient_List = [{ id: "d1",
+Name: 'John',
+Age: '53',
+Speciality: 'Fever,Flu',
+Qualification: 'Cough and Sinus'
+},
+{ id: "d2",
+Name: 'Paul',
+Age: '25',
+Speciality: 'Headache',
+Qualification: 'Blood Pressure and Irregular Heartbeat'
+},
+{ id: "d3",
+Name: 'Molly',
+Age: '28',
+Speciality: 'Allergies',
+Qualification: 'None'
+},
+{ id: "d4",
+Name: 'Biddy',
+Age: '18',
+Speciality: 'Muscle Pain',
+Qualification: 'Sore Muscle and less protein.'}
+];
 
 const Dummy_Doctors_List = [
   {
@@ -39,9 +61,11 @@ const PatientHomePage = () => {
   return (
     <Fragment>
       <h1>PatientHomePage</h1>
-      <DoctorsList doctorslist={Dummy_Doctors_List} />
+      <Patientlist patientlist={patient_List}/>;
     </Fragment>
   );
 };
+
+
 
 export default PatientHomePage;
