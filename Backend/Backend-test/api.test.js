@@ -55,5 +55,18 @@ describe("api test suite", () => {
         //expect(data[0].firstName).toEqual("Sandeep");
       });
   });
-
+  
+  test("GET / fetching and checking whether I can fetch the data ", () => {
+    request(app)
+      .get("/")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        expect(data).toBeDefined();
+      });
+    //const data = response.JSON();
+    //console.log(data);
+  });
+  
 });
