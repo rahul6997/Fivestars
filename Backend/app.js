@@ -14,7 +14,7 @@ const signupRouter = require('./routes/signups-routers');
 const loginRouter = require('./routes/login-router');
 
 const credentials = require('./middleware/credentials');
-const corsOptions = require('./config/corsOptions');
+//const corsOptions = require('./config/corsOptions');
 
 const app = express();
 
@@ -27,7 +27,7 @@ connectDB();
 // });
 
 app.use(credentials);
-app.use(cors(corsOptions));
+//app.use(cors(corsOptions));
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
