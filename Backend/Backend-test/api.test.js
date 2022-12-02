@@ -36,4 +36,24 @@ describe("api test suite", () => {
         expect(response.status).toEqual(200);
       });
   });
+
+  test("POST / fetching the doctor Appointments by sending the user id", async () => {
+
+    const data = {
+        doctorId: '638562c7ffb04c1cb1faf829'
+    }
+    const payload = JSON.stringify(data);
+    request(app)
+      .post("/")
+      .send(payload)
+      .set("Content-Type", "application/json")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        expect(data).toBeDefined();
+        //expect(data[0].firstName).toEqual("Sandeep");
+      });
+  });
+
 });
