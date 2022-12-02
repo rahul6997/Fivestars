@@ -81,4 +81,19 @@ describe("api test suite", () => {
       });
   });
   
+   test("POST /login trying to login and need to get 200 status code", () => {
+    const data = {
+      email: "sandeep1@gmail.com",
+      password: "sandeep1",
+    };
+    const payload = JSON.stringify(data);
+    request(app)
+      .post("/login")
+      .send(payload)
+      .set("Content-Type", "application/json")
+      .then((response) => {
+        expect(response.status).toEqual(200);
+      });
+  });
+  
 });
