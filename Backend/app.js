@@ -14,7 +14,7 @@ const signupRouter = require('./routes/signups-routers');
 const loginRouter = require('./routes/login-router');
 
 const credentials = require('./middleware/credentials');
-const corsOptions = require('./config/corsOptions');
+//const corsOptions = require('./config/corsOptions');
 
 const app = express();
 
@@ -27,21 +27,21 @@ connectDB();
 // });
 
 app.use(credentials);
-app.use(cors(corsOptions));
+//app.use(cors(corsOptions));
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-    if(req.method === 'OPTIONS') {
-        res.header("Access-Control-Allow-Methods", 'PUT, POST, PATCH, DELETE, GET');
-        return res.status(200).json({});
-    }
-    next();
-});
+// app.use((req, res, next) => {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+//     if(req.method === 'OPTIONS') {
+//         res.header("Access-Control-Allow-Methods", 'PUT, POST, PATCH, DELETE, GET');
+//         return res.status(200).json({});
+//     }
+//     next();
+// });
 
 
 app.use('/signup', signupRouter);

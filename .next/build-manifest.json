@@ -35,6 +35,11 @@
       "static/chunks/main.js",
       "static/chunks/pages/Login/patient.js"
     ],
+    "/Patient": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/Patient.js"
+    ],
     "/Signup": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",

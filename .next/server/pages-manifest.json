@@ -4,9 +4,9 @@
   "/_document": "pages/_document.js",
   "/Signup": "pages/Signup.js",
   "/Signup/patient": "pages/Signup/patient.js",
-  "/Login/patient": "pages/Login/patient.js",
   "/Login": "pages/Login.js",
-  "/": "pages/index.js",
+  "/Login/patient": "pages/Login/patient.js",
   "/Doctor": "pages/Doctor.js",
-  "/BookAppointment": "pages/BookAppointment.js"
+  "/BookAppointment": "pages/BookAppointment.js",
+  "/Patient": "pages/Patient.js"
 }
